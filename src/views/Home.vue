@@ -6,7 +6,6 @@
     <!-- <div id="button">
       <button type="submit" class="btn">Register now</button>
     </div> -->
-    -->
     <img
       src="https://static.onecms.io/wp-content/uploads/sites/13/2021/01/13/activewear-stylish-steals.jpg"
     />
