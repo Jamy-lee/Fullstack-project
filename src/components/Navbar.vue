@@ -5,14 +5,15 @@
       <router-link to="/register">REGISTER</router-link> |
       <router-link to="/login">LOGIN</router-link> |
       <router-link to="/products">PRODUCTS</router-link> |
-      <router-link to="/cart">CART</router-link> |
-      <router-link to="/payments">PAYMENTS</router-link>
     </nav>
   </div>
+  <br />
+  <br />
   <!-- <div v-if="!loggedIn">
-        <a> login</a>
-        <a>registerz -->
-  <!-- </div> -->
+    <a> login</a>
+    <a>register</a>
+  </div> -->
+
   <div class="burger"></div>
 </template>
 

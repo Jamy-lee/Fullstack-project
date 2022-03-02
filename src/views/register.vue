@@ -2,7 +2,7 @@
   <div id="register">
     <h1>Register here</h1>
     <div id="form">
-      <form>
+      <form @submit.prevent="register">
         <label>Name:</label>
         <input type="Name" required v-model="Name" />
         <br /><br />
@@ -21,25 +21,25 @@
 
 <script>
 export default {
-  name: "App",
   data() {
     return {
       name: "",
       email: "",
-      number: "",
-      message: "",
+      password: "",
+      contact: "",
+      about: "",
     };
   },
   methods: {
-    handleSubmit() {
-      console.log(this.name, this.email, this.contact, this.message);
-      fetch("https://vue-portfolio-3.herokuapp.com/contact", {
+    register() {
+      fetch("https://projectbackendnande.herokuapp.com/users", {
         method: "POST",
         body: JSON.stringify({
           name: this.name,
           email: this.email,
-          number: this.number,
-          message: this.message,
+          password: this.password,
+          contact: this.contact,
+          about: this.about,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -47,12 +47,12 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          console.log(json);
-          alert("Message sent successfully");
-          (this.name = ""),
-            (this.email = ""),
-            (this.number = ""),
-            (this.message = "");
+          alert("User registered");
+          localStorage.setItem("jwt", json.jwt);
+          this.$router.push({ name: "login" });
+        })
+        .catch((err) => {
+          alert(err);
         });
     },
   },

@@ -2,10 +2,7 @@
   <div id="login">
     <h1>Login here</h1>
     <div id="form">
-      <form>
-        <label>Name:</label>
-        <input type="Name" required v-model="Name" />
-        <br /><br />
+      <form @submit.prevent="login">
         <label>Email:</label>
         <input type="Email" required v-model="Email" />
         <br /><br />
@@ -21,25 +18,20 @@
 
 <script>
 export default {
-  name: "App",
   data() {
     return {
-      name: "",
       email: "",
-      number: "",
-      message: "",
+      password: "",
     };
   },
   methods: {
-    handleSubmit() {
-      console.log(this.name, this.email, this.contact, this.message);
-      fetch("https://vue-portfolio-3.herokuapp.com/contact", {
-        method: "POST",
+    login() {
+      fetch("https://projectbackendnande.herokuapp.com/users", {
+        method: "PATCH",
+
         body: JSON.stringify({
-          name: this.name,
           email: this.email,
-          number: this.number,
-          message: this.message,
+          password: this.password,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -47,12 +39,12 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          console.log(json);
-          alert("Message sent successfully");
-          (this.name = ""),
-            (this.email = ""),
-            (this.number = ""),
-            (this.message = "");
+          localStorage.setItem("jwt", json.jwt);
+          alert("User logged in");
+          this.$router.push({ name: "products" });
+        })
+        .catch((err) => {
+          alert(err);
         });
     },
   },
@@ -61,18 +53,18 @@ export default {
 
 <style>
 .login {
-  background-color:#f2e3d0;;
-  height: 100vh!important;
+  background-color: #f2e3d0;
+  height: 100vh !important;
 }
 .btn {
   margin-top: 30px;
   color: white;
-  background-color:  #a6776e;
+  background-color: #a6776e;
 }
 h1 {
   margin-top: 120px;
   text-align: center;
-  color:  #a6776e;;
+  color: #a6776e;
 }
 form {
   height: 650px;

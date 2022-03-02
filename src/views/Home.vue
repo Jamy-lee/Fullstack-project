@@ -3,9 +3,15 @@
     <Navbar />
 
     <!-- <h1>Welcome</h1> -->
-    <!-- <div id="button">
-      <button type="submit" class="btn">Register now</button>
-    </div> -->
+    <!-- register button -->
+    <div id="button" @click="goToregister()">
+      <a href="#register" class="btn btn-primary">Register here</a>
+    </div>
+    <!-- login button -->
+    <div id="button" @click="goTologin()">
+      <a href="#register" class="btn btn-primary">Login</a>
+    </div>
+
     <img
       src="https://static.onecms.io/wp-content/uploads/sites/13/2021/01/13/activewear-stylish-steals.jpg"
     />
@@ -15,17 +21,22 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 export default {
-  components: { Navbar },
+  methods: {
+    goToregister() {
+      this.$router.push("/register");
+    },
+    goTologin() {
+      this.$router.push("/login");
+    },
+  },
   components: { Navbar },
 };
 </script>
 
 <style scoped>
-/* #button {
-  height: 70px;
-  width: 200px;
-  border-radius: 20px;
-} */
+h1 {
+  margin-top: 150px;
+}
 .Home {
   background-color: #f2e3d0;
   min-height: 70vh;
@@ -34,7 +45,7 @@ export default {
 }
 img {
   width: 1200px;
-  margin-top: 290px;
+  margin-top: 5px;
   margin-left: 600px;
 }
 </style>
