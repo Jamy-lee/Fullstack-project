@@ -4,7 +4,7 @@ import register from "../views/register.vue";
 import login from "../views/login.vue";
 import products from "../views/products.vue";
 import cart from "../views/cart.vue";
-import payments from "../views/payments.vue";
+import addProduct from "../views/addProduct.vue";
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>;
 
 const routes = [
@@ -28,6 +28,16 @@ const routes = [
     path: "/products",
     name: "products",
     component: products,
+  },
+  {
+    path: "/cart",
+    name: "cart",
+    component: cart,
+  },
+  {
+    path: "/addProduct",
+    name: "addProduct",
+    component: addProduct,
   },
 ];
 const router = createRouter({

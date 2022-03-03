@@ -1,13 +1,15 @@
 <template>
   <div id="login">
     <h1>Login here</h1>
-    <div id="form">
+    <div class="form">
       <form @submit.prevent="login">
         <label>Email:</label>
-        <input type="Email" required v-model="Email" />
-        <br /><br />
+        <input type="Email" required v-model="email" />
+        <br />
+        <br />
         <label>Password:</label>
-        <input type="Password" required v-model="Password" />
+        <input type="Password" required v-model="password" />
+        <br />
 
         <button type="submit" class="btn">Submit</button>
         <button type="reset" class="btn">Reset</button>
@@ -26,7 +28,7 @@ export default {
   },
   methods: {
     login() {
-      fetch("https://projectbackendnande.herokuapp.com/users", {
+      fetch("https://projectbackendnande.herokuapp.com/users/login", {
         method: "PATCH",
 
         body: JSON.stringify({
@@ -51,38 +53,38 @@ export default {
 };
 </script>
 
-<style>
-.login {
+<style scoped>
+#login {
   background-color: #f2e3d0;
   height: 100vh !important;
 }
 .btn {
-  margin-top: 30px;
+  margin-top: 35px;
   color: white;
   background-color: #a6776e;
 }
 h1 {
-  margin-top: 120px;
+  margin-top: 60px;
+  margin-bottom: 30px;
   text-align: center;
   color: #a6776e;
 }
-form {
-  height: 650px;
-  margin-top: 65px;
+.form {
+  height: 550px;
+  margin-top: none;
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
-  background: white;
   text-align: left;
   padding: 40px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* -webkit-backdrop-filter: blur(4px); */
+  /* border-radius: 10px; */
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
 }
 label {
   color: #aaa;

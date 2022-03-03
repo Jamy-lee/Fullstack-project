@@ -3,7 +3,7 @@
   <br />
   <br />
   <br />
-  <br />
+  <!-- sort by items -->
   <div class="container d-flex">
     <label for="" class="label">Sort by category</label>
     <select class="select" name="" id="sortCategory" onchange="sortCategory()">
@@ -31,22 +31,9 @@
 
     <!-- Button trigger modal -->
 
-    <button
-      type="button"
-      class="button"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-    >
-      Add a product
-    </button>
-    <button
-      type="button"
-      class="button"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-    >
-      Cart
-    </button>
+    <div id="button" @click="goToaddProduct()">
+      <a href="#addProduct" class="btn btn-primary">Add Product</a>
+    </div>
   </div>
 
   <!-- Modal -->
@@ -70,7 +57,7 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="addTitle" class="form-label">Title</label>
+            <label for="addTitle" class="form-label">Name</label>
             <input
               class="form-control"
               type="text"
@@ -142,13 +129,11 @@
         value="1"
       />
       <!-- <a href="#" class="btn btn-primary">Edit</a> -->
-      <div id="button" @click="deleteProduct()">
-        <a href="#products" class="btn btn-primary">Delete</a>
-      </div>
-      <a href="#cart" class="btn btn-primary">Cart </a>
+      <!-- <a href="#" class="btn btn-primary">Edit</a>
+      <a href="#" class="btn btn-primary">Delete</a>
+      <a href="#" class="btn btn-primary">Cart </a> -->
     </div>
   </div>
-
   <!-- card 2 -->
   <div class="card" style="width: 300px">
     <img
@@ -166,9 +151,9 @@
         min="1"
         value="1"
       />
-      <a href="#" class="btn btn-primary">Edit</a>
+      <!-- <a href="#" class="btn btn-primary">Edit</a>
       <a href="#" class="btn btn-primary">Delete</a>
-      <a href="#" class="btn btn-primary">Cart </a>
+      <a href="#" class="btn btn-primary">Cart </a> -->
     </div>
   </div>
   <!-- card 3 -->
@@ -188,9 +173,9 @@
         min="1"
         value="1"
       />
-      <a href="#" class="btn btn-primary">Edit</a>
+      <!-- <a href="#" class="btn btn-primary">Edit</a>
       <a href="#" class="btn btn-primary">Delete</a>
-      <a href="#" class="btn btn-primary">Cart</a>
+      <a href="#" class="btn btn-primary">Cart</a> -->
     </div>
   </div>
 
@@ -211,9 +196,9 @@
         min="1"
         value="1"
       />
-      <a href="#" class="btn btn-primary">Edit</a>
+      <!-- <a href="#" class="btn btn-primary">Edit</a>
       <a href="#" class="btn btn-primary">Delete</a>
-      <a href="#" class="btn btn-primary">Cart</a>
+      <a href="#" class="btn btn-primary">Cart</a> -->
     </div>
   </div>
   <div
@@ -304,149 +289,153 @@
 </template>
 
 <script>
-// let products = JSON.parse(localStorage.getItem("products"))
-//   ? JSON.parse(localStorage.getItem("products"))
-//   : [
-//       {
-//         title: "female pants",
-//         category: "ladies",
-//         price: 99.99,
-//         img: "https://img.joomcdn.net/a4d061cede3cc457594d6ee73ed52417c41a1198_original.jpeg",
-//       },
-//       {
-//         title: "female tops",
-//         category: "ladies",
-//         price: 99.99,
-//         img: "https://img.joomcdn.net/a4d061cede3cc457594d6ee73ed52417c41a1198_original.jpeg",
-//       },
-//       {
-//         title: "Male tops",
-//         category: "ladies",
-//         price: 99.99,
-//         img: "https://img.joomcdn.net/a4d061cede3cc457594d6ee73ed52417c41a1198_original.jpeg",
-//       },
-//       {
-//         title: "Male pants",
-//         category: "ladies",
-//         price: 99.99,
-//         img: "https://img.joomcdn.net/a4d061cede3cc457594d6ee73ed52417c41a1198_original.jpeg",
-//       },
-//     ];
+export default {
+  methods: {
+    goToaddProduct() {
+      this.$router.push("/addProduct");
+    },
+  },
+};
 
-// let cart = JSON.parse(localStorage.getItem("cart"))
-//   ? JSON.parse(localStorage.getItem("cart"))
-//   : [];
+let products = JSON.parse(localStorage.getItem("products"))
+  ? JSON.parse(localStorage.getItem("products"))
+  : [
+      {
+        title: "female pants",
+        category: "ladies",
+        price: 99.99,
+        img: "https://pyxis.nymag.com/v1/imgs/533/ffd/338e7f9337adf583c2df9f0f815d6ba414-Just-My-Size-Women-s-Plus-Size-Active-Pi.2x.rsquare.w600.png",
+      },
+      {
+        title: "female tops",
+        category: "ladies",
+        price: 99.99,
+        img: "https://www.poobienaidoos.co.za/wp-content/uploads/2016/09/pum-essential-racerback-tank-top-ladies-1453465864.png",
+      },
+      {
+        title: "Male pants",
+        category: "ladies",
+        price: 99.99,
+        img: "https://www.bigw.com.au/medias/sys_master/images/images/hed/hac/28096359759902.jpg",
+      },
+      {
+        title: "Male tops",
+        category: "ladies",
+        price: 99.99,
+        img: "https://cdn.shopify.com/s/files/1/0941/4306/products/BlackFishtailBaseballTeeFront_1024x1024.png?v=1619799951",
+      },
+    ];
+
+let cart = JSON.parse(localStorage.getItem("cart"))
+  ? JSON.parse(localStorage.getItem("cart"))
+  : [];
 
 // ADD TO CART
 
-
 // // UPDATE
-// function updateProduct(position) {
-//   let title = document.querySelector(`#editTitle${position}`).value;
-//   let category = document.querySelector(`#editCategory${position}`).value;
-//   let price = document.querySelector(`#editPrice${position}`).value;
-//   let img = document.querySelector(`#editImg${position}`).value;
+function updateProduct(position) {
+  let title = document.querySelector(`#editTitle${position}`).value;
+  let category = document.querySelector(`#editCategory${position}`).value;
+  let price = document.querySelector(`#editPrice${position}`).value;
+  let img = document.querySelector(`#editImg${position}`).value;
 
-//   try {
-//     if (!title || !price || !img) throw new Error("Please fill in all fields");
-//     products[position] = {
-//       title,
-//       category,
-//       price,
-//       img,
-//     };
-//     localStorage.setItem("products", JSON.stringify(products));
-//     readProducts(products);
-//   } catch (err) {
-//     alert(err);
-//   }
-// }
+  try {
+    if (!title || !category || !price || !img)
+      throw new Error("Please fill in all fields");
+    products[position] = {
+      title,
+      category,
+      price,
+      img,
+    };
+    localStorage.setItem("products", JSON.stringify(products));
+    readProducts(products);
+  } catch (err) {
+    alert(err);
+  }
+}
 
 // DELETE
-//  methods:{
-//     deleteProduct(); {
-//       this.$router.push("/products");
-//     };
 
-//     deleteProduct(position) {
-//   let confirmation = confirm(
-//     "Are you sure you want to delete the selected product?"
-//   );
+function deleteProduct(position) {
+  let confirmation = confirm(
+    "Are you sure you want to delete the selected product?"
+  );
 
-//   if (confirmation) {
-//     products.splice(position, 1);
-//     localStorage.setItem("products", JSON.stringify(products));
-//     readProducts(products);
-//   }
-// }
+  if (confirmation) {
+    products.splice(position, 1);
+    localStorage.setItem("products", JSON.stringify(products));
+    readProducts(products);
+  }
+}
 // // SORT BY CATEGORY
-// function sortCategory() {
-//   let category = document.querySelector("#sortCategory").value;
+function sortCategory() {
+  let category = document.querySelector("#sortCategory").value;
 
-//   if (category == "All") {
-//     return readProducts(products);
-//   }
+  if (category == "All") {
+    return readProducts(products);
+  }
 
-//   let foundProducts = products.filter((product) => {
-//     return product.category == category;
-//   });
+  let foundProducts = products.filter((product) => {
+    return product.category == category;
+  });
 
-//   readProducts(foundProducts);
-//   console.log(foundProducts);
-// }
+  readProducts(foundProducts);
+  console.log(foundProducts);
+}
 
 // SORT BY NAME
 
-// function sortName() {
-//   let direction = document.querySelector("#sortName").value;
+function sortName() {
+  let direction = document.querySelector("#sortName").value;
 
-//   let sortedProducts = products.sort((a, b) => {
-//     if (a.title.toLowerCase() < b.title.toLowerCase()) {
-//       return -1;
-//     }
-//     if (a.title.toLowerCase() > b.title.toLowerCase()) {
-//       return 1;
-//     }
-//     return 0;
-//   });
-//   if (direction == "descending") sortedProducts.reverse();
-//   console.log(sortedProducts);
-//   readProducts(products);
-// }
+  let sortedProducts = products.sort((a, b) => {
+    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+      return -1;
+    }
+    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+      return 1;
+    }
+    return 0;
+  });
+  if (direction == "descending") sortedProducts.reverse();
+  console.log(sortedProducts);
+  readProducts(products);
+}
 
 // // SORT BY PRICE
 
-// function sortPrice() {
-//   let direction = document.querySelector("#sortPrice").value;
+function sortPrice() {
+  let direction = document.querySelector("#sortPrice").value;
 
-//   let sortedProducts = products.sort((a, b) => a.price - b.price);
+  let sortedProducts = products.sort((a, b) => a.price - b.price);
 
-//   console.log(sortedProducts);
+  console.log(sortedProducts);
 
-//   if (direction == "descending") sortedProducts.reverse();
-//   readProducts(sortedProducts);
-// }
+  if (direction == "descending") sortedProducts.reverse();
+  readProducts(sortedProducts);
+}
 
 // // CHECKOUT
-// function checkout() {
-//   let total = cart
-//     .reduce((total, product) => {
-//       return total + product.price * product.qty;
-//     }, 0)
-//     .toFixed(2);
-//   try {
-//     if (parseInt(total) == 0) throw new Error("Nothing in cart");
-//     let confirmation = confirm(`Total payment needed: R${total}`);
+function checkout() {
+  let total = cart
+    .reduce((total, product) => {
+      return total + product.price * product.qty;
+    }, 0)
+    .toFixed(2);
+  try {
+    if (parseInt(total) == 0) throw new Error("Nothing in cart");
+    let confirmation = confirm(`Total payment needed: R${total}`);
 
-//     if (confirmation) {
-//       cart.length = 0;
-//       localStorage.removeItem("cart");
-//       readCart(cart);
-//     }
-//   } catch (err) {
-//     alert(err);
-//   }
-// }
+    if (confirmation) {
+      cart.length = 0;
+      localStorage.removeItem("cart");
+      readCart(cart);
+    }
+  } catch (err) {
+    alert(err);
+  }
+}
 </script>
 
 <style scoped>
@@ -476,9 +465,14 @@ body {
   height: 150vh;
 }
 .btn {
+  padding: 20px;
+  border:none;
   background-color: #a6776e;
   border: none;
-  width: 100px;
+  width: 150px;
+  height: 60px;
+  position: relative;
+  left:10px;
 }
 .card {
   display: inline-block;

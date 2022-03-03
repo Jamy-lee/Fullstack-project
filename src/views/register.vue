@@ -1,16 +1,19 @@
 <template>
-  <div id="register">
+  <div class="register">
     <h1>Register here</h1>
-    <div id="form">
+    <div class="form">
       <form @submit.prevent="register">
         <label>Name:</label>
-        <input type="Name" required v-model="Name" />
-        <br /><br />
+        <input type="Name" required v-model="name" />
+        <br />
         <label>Email:</label>
-        <input type="Email" required v-model="Email" />
-        <br /><br />
+        <input type="Email" required v-model="email" />
+        <br />
+        <label>Contact:</label>
+        <input type="number" required v-model="contact" />
+        <br />
         <label>Password:</label>
-        <input type="Password" required v-model="Password" />
+        <input type="Password" required v-model="password" />
 
         <button type="submit" class="btn">Submit</button>
         <button type="reset" class="btn">Reset</button>
@@ -25,9 +28,8 @@ export default {
     return {
       name: "",
       email: "",
-      password: "",
       contact: "",
-      about: "",
+      password: "",
     };
   },
   methods: {
@@ -37,9 +39,8 @@ export default {
         body: JSON.stringify({
           name: this.name,
           email: this.email,
-          password: this.password,
           contact: this.contact,
-          about: this.about,
+          password: this.password,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -47,6 +48,7 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
+          console.log(json);
           alert("User registered");
           localStorage.setItem("jwt", json.jwt);
           this.$router.push({ name: "login" });
@@ -59,9 +61,9 @@ export default {
 };
 </script>
 
-<style>
-body {
-  background-color: #fdedd8;
+<style scoped>
+.register {
+  height: 100vh !important;
 }
 .btn {
   margin-top: 30px;
@@ -69,27 +71,27 @@ body {
   background-color: #a6776e;
 }
 h1 {
-  margin-top: 120px;
+  margin-top: 60px;
+  margin-bottom: 30px;
   text-align: center;
   color: #a6776e;
 }
-form {
-  height: 650px;
-  margin-top: 65px;
+.form {
+  height: 750px;
+  margin-top: none;
   display: block;
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
-  background: white;
   text-align: left;
   padding: 40px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  /* -webkit-backdrop-filter: blur(4px); */
+  /* border-radius: 10px; */
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
 }
 label {
   color: #aaa;

@@ -11,7 +11,7 @@ export default {
 // isloggedin = false
 </script>
 <style>
-#app {
+/* #app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
-}
+} */
 </style>
