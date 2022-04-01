@@ -1,7 +1,7 @@
 <template>
   <!-- ADD PRODUCT MODAL -->
 
-  <div class="form">
+  <div id="form">
     <form @submit.prevent="addProduct">
       <label>Name:</label>
       <input type="Name" required v-model="name" />
@@ -78,8 +78,8 @@ export default {
 </script>
 
 <style scoped>
-.form {
-  height: 750px;
+#form {
+  height: 800px;
   margin-top: none;
   display: block;
   margin-left: auto;

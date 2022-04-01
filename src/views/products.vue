@@ -466,13 +466,13 @@ body {
 }
 .btn {
   padding: 20px;
-  border:none;
+  border: none;
   background-color: #a6776e;
   border: none;
   width: 150px;
   height: 60px;
   position: relative;
-  left:10px;
+  left: 10px;
 }
 .card {
   display: inline-block;

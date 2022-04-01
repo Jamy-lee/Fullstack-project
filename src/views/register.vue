@@ -1,7 +1,7 @@
 <template>
   <div class="register">
     <h1>Register here</h1>
-    <div class="form">
+    <div id="form">
       <form @submit.prevent="register">
         <label>Name:</label>
         <input type="Name" required v-model="name" />
@@ -76,7 +76,9 @@ h1 {
   text-align: center;
   color: #a6776e;
 }
-.form {
+#form {
+  position: relative;
+  top:10px;
   height: 750px;
   margin-top: none;
   display: block;
